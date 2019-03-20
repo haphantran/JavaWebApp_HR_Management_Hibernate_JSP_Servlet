@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-Mar-2019 11:48:25 AM by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 20-Mar-2019 3:46:58 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.Employee" table="EMPLOYEE">
-        <id name="employeeId" type="long">
+    <class name="bean.Employee" table="EMPLOYEES">
+        <id name="employeeId" type="java.lang.Integer">
             <column name="EMPLOYEEID" />
             <generator class="assigned" />
         </id>
@@ -32,10 +32,10 @@
         <property name="jobId" type="java.lang.String">
             <column name="JOBID" />
         </property>
-        <property name="managerId" type="int">
+        <property name="managerId" type="java.lang.Integer">
             <column name="MANAGERID" />
         </property>
-        <property name="departmentId" type="int">
+        <property name="departmentId" type="java.lang.Integer">
             <column name="DEPARTMENTID" />
         </property>
     </class>

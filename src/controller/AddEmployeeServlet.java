@@ -18,7 +18,7 @@ import model.DAO;
 /**
  * Servlet implementation class HRServlet
  */
-@WebServlet("/HRServlet")
+@WebServlet("/AddEmployeeServlet")
 public class AddEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -45,7 +45,7 @@ public class AddEmployeeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String firstName;
 		String lastName; String email; Date hireDate = null; String phoneNumber;
-		Double salary; Double commissionPct; String jobId; int managerId; int departmentId;
+		Double salary; Double commissionPct; String jobId; Integer managerId; Integer departmentId;
 		
 		firstName = request.getParameter("firstName");
 		lastName = request.getParameter("lastName");

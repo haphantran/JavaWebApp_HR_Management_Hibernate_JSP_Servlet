@@ -23,7 +23,7 @@ public class Employee implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="EMPLOYEE_ID")
-	private long employeeId;
+	private Integer employeeId;
 
 
 	@Column(name="FIRST_NAME")
@@ -48,10 +48,10 @@ public class Employee implements Serializable {
 	@Column(name="JOB_ID")
 	private String jobId;
 	@Column(name="MANAGER_ID")
-	private int managerId;
+	private Integer managerId;
 
 	@Column(name="DEPARATMENT_ID")
-	private int departmentId;
+	private Integer departmentId;
 
 
 
@@ -60,8 +60,10 @@ public class Employee implements Serializable {
 
 
 
-	public Employee(String firstName, String lastName, String email, Date hireDate, String phoneNumber, Double salary,
-			Double commissionPct, String jobId, int managerId, int departmentId) {
+
+	public Employee(String firstName, String lastName, String email, Date hireDate,
+			String phoneNumber, Double salary, Double commissionPct, String jobId, Integer managerId,
+			Integer departmentId) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -77,15 +79,18 @@ public class Employee implements Serializable {
 
 
 
-	public long getEmployeeId() {
+
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
 
 
 
-	public void setEmployeeId(long employeeId) {
+
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
+
 
 
 
@@ -95,9 +100,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 
 
 
@@ -107,9 +114,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 
 
 
@@ -119,9 +128,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 
@@ -131,9 +142,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
+
 
 
 
@@ -143,9 +156,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 
 
 
@@ -155,9 +170,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
+
 
 
 
@@ -167,9 +184,11 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setCommissionPct(Double commissionPct) {
 		this.commissionPct = commissionPct;
 	}
+
 
 
 
@@ -179,33 +198,39 @@ public class Employee implements Serializable {
 
 
 
+
 	public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
 
 
 
-	public int getManagerId() {
+
+	public Integer getManagerId() {
 		return managerId;
 	}
 
 
 
-	public void setManagerId(int managerId) {
+
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
 
 
 
-	public int getDepartmentId() {
+
+	public Integer getDepartmentId() {
 		return departmentId;
 	}
 
 
 
-	public void setDepartmentId(int departmentId) {
+
+	public void setDepartmentId(Integer departmentId) {
 		this.departmentId = departmentId;
 	}
+
 
 
 
