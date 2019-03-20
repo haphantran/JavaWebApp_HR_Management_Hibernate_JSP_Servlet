@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-Mar-2019 11:48:25 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="bean.Employee" table="EMPLOYEE">
+        <id name="employeeId" type="long">
+            <column name="EMPLOYEEID" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="java.lang.String">
+            <column name="FIRSTNAME" />
+        </property>
+        <property name="lastName" type="java.lang.String">
+            <column name="LASTNAME" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="hireDate" type="java.util.Date">
+            <column name="HIREDATE" />
+        </property>
+        <property name="phoneNumber" type="java.lang.String">
+            <column name="PHONENUMBER" />
+        </property>
+        <property name="salary" type="java.lang.Double">
+            <column name="SALARY" />
+        </property>
+        <property name="commissionPct" type="java.lang.Double">
+            <column name="COMMISSIONPCT" />
+        </property>
+        <property name="jobId" type="java.lang.String">
+            <column name="JOBID" />
+        </property>
+        <property name="managerId" type="int">
+            <column name="MANAGERID" />
+        </property>
+        <property name="departmentId" type="int">
+            <column name="DEPARTMENTID" />
+        </property>
+    </class>
+</hibernate-mapping>
