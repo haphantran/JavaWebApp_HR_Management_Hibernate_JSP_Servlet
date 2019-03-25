@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add a new Employee</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
   <h1>Add a new Employee</h1>
