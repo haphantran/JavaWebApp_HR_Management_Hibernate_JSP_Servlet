@@ -5,7 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Error</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/main.css" type="text/css" />
+
 </head>
 <body>
 <h1> Fail to login</h1>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home - HR Management</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 <body>
 <h1>Welcome to HR Management Application</h1>

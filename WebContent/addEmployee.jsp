@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add a new Employee</title>
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 <body>
   <h1>Add a new Employee</h1>
@@ -33,7 +33,28 @@
       </tr>
       <tr>
         <td>Job ID: </td>
-        <td><input type="text" name="jobId"> </td>
+        <td><select type="text" name="jobId">
+        <option></option>
+         <option>AD_PRES</option> 
+         <option>AD_VP</option> 
+         <option>AD_ASST</option> 
+         <option>FI_MGR</option> 
+         <option>FI_ACCOUNT</option> 
+         <option>AC_MGR</option> 
+         <option>AC_ACCOUNT</option> 
+         <option>SA_MAN</option> 
+         <option>SA_REP</option> 
+         <option>PU_MAN</option> 
+         <option>PU_CLERK</option> 
+         <option>ST_MAN</option> 
+         <option>ST_CLERK</option> 
+         <option>SH_CLERK</option> 
+         <option>IT_PROG</option> 
+         <option>MK_MAN</option> 
+         <option>MK_REP</option> 
+         <option>HR_REP</option> 
+         <option>PR_REP</option> 
+         </select></td>
       </tr>
       <tr>
         <td>Salary: </td>

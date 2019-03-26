@@ -50,7 +50,7 @@ public class Employee implements Serializable {
 	@Column(name="MANAGER_ID")
 	private Integer managerId;
 
-	@Column(name="DEPARATMENT_ID")
+	@Column(name="DEPARTMENT_ID")
 	private Integer departmentId;
 
 

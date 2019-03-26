@@ -50,7 +50,8 @@ public class LoginServlet extends HttpServlet {
 			Employee emp = dao.getEmployeeByID(empid);
 			System.out.println(emp.getFirstName() + " " + emp.getLastName());
 			request.setAttribute("employee", emp);
-			response.sendRedirect("home.jsp");
+			getServletContext().getRequestDispatcher("/EmployeeListPage.jsp")
+			.forward(request, response);
 		} else {
 			response.sendRedirect("error.jsp");
 		}			
