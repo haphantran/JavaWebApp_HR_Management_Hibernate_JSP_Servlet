@@ -12,7 +12,7 @@
 <h1>You have logged out</h1>
 
 <!-- need to clear the context or the entity -->
-<a href="login.html">Login</a>
+<a href="index.html">Login</a>
        
  
   </nav>
