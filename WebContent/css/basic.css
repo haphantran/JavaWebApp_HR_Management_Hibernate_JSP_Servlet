@@ -10,6 +10,8 @@ body {
 	height: auto;
 }
 
+
+
 a {
 	color: #92badd;
 	display: inline-block;
@@ -23,29 +25,18 @@ h1 {
 	font-weight: 600;
 	text-transform: uppercase;
 	display: inline-block;
-	margin: 40px 8px 10px 8px;
+	margin: 40px 10px 10px;
 	color: darkblue;
 }
 
 h2 {
 	text-align: center;
-	font-size: 12px;
+	font-size: 18px;
 	font-weight: 600;
 	text-transform: uppercase;
 	display: inline-block;
-	margin: 40px 8px 10px 8px;
+	margin: 10px;
 	color: #cccccc;
-}
-
-/* STRUCTURE */
-.wrapper {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
-	width: 100%;
-	min-height: 100%;
-	padding: 20px;
 }
 
 .container {
@@ -58,22 +49,36 @@ h2 {
 	padding: 0px;
 	
 	text-align: center;
-	background-color: lightblue;}
+	background-color: lightblue;
+}
+	
+/* STRUCTURE */
+.wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	min-height: 100%;
+	padding: 20px;
+}
+
 
 #formContent {
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
 	background: #fff;
-	padding: 30px;
-	margin: auto;
 	width: 100%;
 	max-width: 480px;
-	position: relative;
-	padding: 10px;
-	top: 50px; -webkit-box-shadow : 0 30px 60px 0 rgba( 0, 0, 0, 0.3);
+	-webkit-box-shadow : 0 30px 60px 0 rgba( 0, 0, 0, 0.3);
 	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 	text-align: center;
 	-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	
+	position: relative;
+	padding: 10px;
+	top:140px;
+    margin: auto auto;
 }
 
 #formFooter {

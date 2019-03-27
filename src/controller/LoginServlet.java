@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("index.html");
+		response.sendRedirect("login.jsp");
 	}
 
 	/**
@@ -65,10 +65,10 @@ public class LoginServlet extends HttpServlet {
 			Employee emp = dao.getEmployeeByID(empid);
 			System.out.println(emp.getFirstName() + " " + emp.getLastName());
 			session.setAttribute("employee", emp);
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("index.jsp");
 
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			out.println("<font color=red>Either user name or password is wrong.</font>");
 			rd.include(request, response);
 		} // TODO Auto-generated method stub

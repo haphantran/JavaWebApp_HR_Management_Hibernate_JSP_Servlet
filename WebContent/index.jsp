@@ -25,8 +25,50 @@
 	<%
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
-				response.sendRedirect("index.jsp");
-			} else {
+	%>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Employee List Page</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="">Employee List</a></li>
+				<li><a href="addEmployee.jsp">New Employee</a></li>
+				<li><a href="">Search Employee</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a> <%
+ 	Employee emp = (Employee) session.getAttribute("employee");
+ 			out.print(emp.getFirstName() + " " + emp.getLastName());
+ %>
+				</a></li>
+				<li><a href="logoutServlet"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+
+	<div class="container">
+
+		<div id="formContent">
+			<h2>Show Employees</h2>
+			<form action="showDepartmentEmployees" method="post">
+				<input type="text" name="departmentId" value=""
+					placeholder="Department ID"> <input type="submit"
+					value="Show Department Employees"> <input type="button"
+					value="Show All Employees"
+					onclick="window.location.href='http://www.google.com'">
+			</form>
+		</div>
+
+	</div>
+
+
+	<%
+		} else {
 	%>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -49,19 +91,15 @@
 	<div class="container">
 
 		<div id="formContent">
-			<h1>You have logged out</h1>
-
-			<!-- need to clear the context or the entity -->
-
-			<input type="button" value="Login"
-				onclick="window.location.href='login.jsp'">
-
+			<h1>Welcome to HR Management System</h1>
+			<img style="height: 200px" src="images/hr.jpeg" alt="HR">
 		</div>
 	</div>
 	<%
 		}
 		}
 	%>
+
 	<!-- Footer -->
 	<footer class="page-footer font-small blue pt-4">
 
@@ -76,9 +114,7 @@
 
 					<!-- Content -->
 					<h5 class="text-uppercase">HR Management System</h5>
-					<p>This system allow users to add, edit and delete employee
-						information. For more information, please do not hesitate to
-						contact us</p>
+					<p>This system allow users to add, edit and delete employee information. For more information, please do not hesitate to contact us</p>
 
 				</div>
 				<!-- Grid column -->
@@ -94,7 +130,7 @@
 					<ul class="list-unstyled">
 						<li><a href="#!">Link 1</a></li>
 						<li><a href="#!">Link 2</a></li>
-
+						
 					</ul>
 
 				</div>
@@ -109,7 +145,7 @@
 					<ul class="list-unstyled">
 						<li><a href="#!">Link 1</a></li>
 						<li><a href="#!">Link 2</a></li>
-
+						
 					</ul>
 
 				</div>
@@ -122,11 +158,13 @@
 		<!-- Footer Links -->
 
 		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© Seneca College
-			CJV805SAA.03567.2191 Group 10</div>
+		<div class="footer-copyright text-center py-3">
+			© Seneca College CJV805SAA.03567.2191 Group 10
+		</div>
 		<!-- Copyright -->
 
 	</footer>
 	<!-- Footer -->
+
 </body>
 </html>
