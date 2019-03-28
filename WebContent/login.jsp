@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="bean.Employee"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="css/basic.css">
 </head>
 <body>
+	<%@ include file="navigation.jsp"%>
+
 	<%
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
@@ -29,7 +31,7 @@
 		<div class="wrapper fadeInDown">
 			<div id="formContent">
 				<!-- Tabs Titles -->
-				<h2>HR Management System</h2>
+				<h1>HR Management System</h1>
 				<!-- Login Form -->
 				<form action="loginServlet" method="post">
 					<input type="text" id="login" class="fadeIn second" name="username"
@@ -49,5 +51,6 @@
 		}
 		}
 	%>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

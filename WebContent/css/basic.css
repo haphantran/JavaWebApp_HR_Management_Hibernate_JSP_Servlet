@@ -25,7 +25,7 @@ h1 {
 	font-weight: 600;
 	text-transform: uppercase;
 	display: inline-block;
-	margin: 40px 10px 10px;
+	margin: 20px 10px 10px;
 	color: darkblue;
 }
 
@@ -40,16 +40,15 @@ h2 {
 }
 
 .container {
-	
 	background: #fff;
 	width: 100%;
-	min-height: 800px;
+	height: auto;
+	min-height: 660px;
 	position: relative;
-	top: 0;
+	top: 50px;
 	padding: 0px;
-	
 	text-align: center;
-	background-color: lightblue;
+	background-color: #e5e5e5;
 }
 	
 /* STRUCTURE */
@@ -74,20 +73,65 @@ h2 {
 	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 	text-align: center;
 	-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-	
 	position: relative;
 	padding: 10px;
-	top:140px;
+	top:80px;
     margin: auto auto;
 }
 
 #formFooter {
 	background-color: #f6f6f6;
 	border-top: 1px solid #dce8f1;
-	padding: 25px;
+	padding: 25px; 
 	text-align: center;
 	-webkit-border-radius: 0 0 10px 10px;
 	border-radius: 0 0 10px 10px;
+}
+
+.main{
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	background: #fff;
+	width: 95%;
+	height:auto;
+	-webkit-box-shadow : 0 30px 60px 0 rgba( 0, 0, 0, 0.3);
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	text-align: center;
+	-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	
+	position: relative;
+	padding: 10px;
+    margin: 40px auto;
+}
+.main table{
+	margin:auto;
+	text-align: left;
+	font-weight: bolder;
+}
+
+.main table th{
+	font-size: 16px;
+}
+
+.main table td, .main table th{
+	padding: 10px 10px;
+	text-align: center;
+}
+
+.employeeList tr:nth-child(2n){
+	background-color:#addae7;
+}
+
+.main table input, .main table select{
+	width:90%;
+}
+.main input[type=submit], .main input[type=reset]{
+	width:200px;
+}
+
+.page-footer{
+	position: relative;
+	top:50px;
 }
 
 /* TABS */
@@ -138,7 +182,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active
 	transform: scale(0.95);
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=date], select {
 	background-color: #f6f6f6;
 	border: none;
 	color: #0d0d0d;

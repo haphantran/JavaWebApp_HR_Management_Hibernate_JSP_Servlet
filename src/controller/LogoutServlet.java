@@ -35,7 +35,7 @@ public class LogoutServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		
+
 		HttpSession session = request.getSession(false);
 		// session.setAttribute("user", null);
 		session.removeAttribute("user");
@@ -50,7 +50,7 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-	
+
 	}
 
 }

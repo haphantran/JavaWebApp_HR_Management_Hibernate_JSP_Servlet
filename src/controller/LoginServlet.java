@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 															// session if exist
 															// or create one
 			session.setAttribute("user", username);
-			session.setMaxInactiveInterval(30); // 30 seconds
+			session.setMaxInactiveInterval(300); // 300 seconds
 			Employee emp = dao.getEmployeeByID(empid);
 			System.out.println(emp.getFirstName() + " " + emp.getLastName());
 			session.setAttribute("employee", emp);
