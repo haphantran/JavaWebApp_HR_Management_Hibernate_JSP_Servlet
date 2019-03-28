@@ -34,12 +34,13 @@
 
 
 				<h1>Show Employees</h1>
-				<form action="employeeList.jsp" method="post">
+				<form action="GetEmployeeListServlet" method="post">
 					<input type="text" name="departmentId" value=""
-						placeholder="Department ID"> <input type="submit"
-						value="Show Department Employees"> <input type="button"
-						value="Show All Employees"
-						onclick="window.location.href='employeeList.jsp'">
+						placeholder="Department ID">
+					<input type="submit"
+						value="Show Department Employees">
+					<input type="submit"
+						value="Show All Employees">
 				</form>
 
 

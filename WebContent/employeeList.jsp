@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="bean.Employee,java.util.ArrayList"%>
+<%@ page import="bean.Employee,java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +34,7 @@
 
 		<div class="main">
 			<%
-				//ArrayList<Employee> empList = (ArrayList<Employee>) request.getAttribute("employeeList");
+				List<Employee> empList = (List<Employee>) request.getAttribute("employeeList");
 			%>
 
 
@@ -42,30 +42,32 @@
 				<thead>
 					<tr>
 						<th>Employee ID</th>
-						<th>Name</th>
+						<th>First Name</th>
+						<th>LastName</th>
 						<th>Email</th>
-						<th>department</th>
+						<th>Department ID</th>
 						<th>Job ID</th>
 						<th>Manager ID</th>
 						<th>Hire Date</th>
 						<th>Salary</th>
-						<th>Commission</th>
+						<th>Commission PCT</th>
 					</tr>
 				</thead>
 				<tbody>
 					<%
-						for (int i = 1; i < count; i++) {
+						for (Employee employee : empList) {						
 					%>
 					<tr>
-						<td><a href="http://www.google.com"><%=i%></a></td>
-						<td>apple</td>
-						<td>apple</td>
-						<td>apple</td>
-						<td>apple</td>
-						<td>apple</td>
-						<td>apple</td>
-						<td>apple</td>
-						<td>apple</td>
+						<td><a href=""><%=employee.getEmployeeId()%></a></td>
+						<td><%=employee.getFirstName()%></td>
+						<td><%=employee.getLastName()%></td>
+						<td><%=employee.getEmail()%></td>
+						<td><%=employee.getDepartmentId()%></td>
+						<td><%=employee.getJobId()%></td>
+						<td><%=employee.getManagerId()%></td>
+						<td><%=employee.getHireDate()%></td>
+						<td><%=employee.getSalary()%></td>
+						<td><%=employee.getCommissionPct()%></td>
 					</tr>
 					<%
 						}

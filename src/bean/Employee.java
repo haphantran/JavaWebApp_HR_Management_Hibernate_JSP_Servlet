@@ -12,10 +12,10 @@ import java.util.Date;
  */
 @Entity
 @Table(name="EMPLOYEES")
-@NamedQueries ({
-	@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e"),
-	@NamedQuery(name="Employee.findEmployeeByFirstAndLastName", 
-                query="SELECT e FROM Employee e WHERE e.firstName = ?1 and e.lastName = ?2")
+@org.hibernate.annotations.NamedQueries ({
+	@org.hibernate.annotations.NamedQuery(name="Employee.findAll", query="FROM Employee"),
+	@org.hibernate.annotations.NamedQuery(name="Employee.findEmployeeByDeptId", 
+                							query="FROM Employee WHERE departmentId = :deptId")
 })
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;

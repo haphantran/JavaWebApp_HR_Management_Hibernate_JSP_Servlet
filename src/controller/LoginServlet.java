@@ -63,7 +63,6 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", username);
 			session.setMaxInactiveInterval(300); // 300 seconds
 			Employee emp = dao.getEmployeeByID(empid);
-			System.out.println(emp.getFirstName() + " " + emp.getLastName());
 			session.setAttribute("employee", emp);
 			response.sendRedirect("index.jsp");
 

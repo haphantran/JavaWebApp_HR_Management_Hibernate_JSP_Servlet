@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.jdbc.ReturningWork;
+import org.hibernate.query.Query;
 
 import bean.Employee;
  
@@ -23,20 +24,17 @@ public class DAO {
 			
 			Integer result = session.doReturningWork(new ReturningWork <Integer> () {
 				public Integer execute(Connection conn) throws SQLException {
-					//call the security function to check
-					 
+					//call the security function to check				 
 			
 					CallableStatement stmt;
 					
 					stmt = conn.prepareCall(" {? = call p_security.F_SECURITY(?,?)}");
 					
-
 					stmt.registerOutParameter (1,Types.INTEGER);
 					stmt.setString(2, username);
 					stmt.setString(3, password);
 					stmt.execute();
 			
-					
 					
 					return stmt.getInt(1);		
 				}											
@@ -60,6 +58,18 @@ public class DAO {
 		Employee emp = (Employee) session.get(Employee.class, empid);
 		return emp;		
 	}
+	public List<Employee> getEmployeeByDeptId(int deptId){
 	
+		Session session = HibernateUtil.openSession();
+		Query<Employee> query = session.createNamedQuery("Employee.findEmployeeByDeptId", Employee.class);
+		query.setParameter("deptId", deptId);
+		return query.getResultList();
+	}
+	
+	public List<Employee> getAllEmployee(){
+		Session session = HibernateUtil.openSession();
+		Query<Employee> query = session.createNamedQuery("Employee.findAll", Employee.class);		
+		return query.getResultList();
+	}
 
 }
