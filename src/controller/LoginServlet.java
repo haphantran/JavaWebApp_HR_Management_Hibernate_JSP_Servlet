@@ -68,10 +68,11 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("index.jsp");
 
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-			out.println("<font color=red>Either user name or password is wrong.</font>");
-			rd.include(request, response);
-		} // TODO Auto-generated method stub
+			String errorMessage = "Login failed: The username or password is not corrrect";
+			request.setAttribute("errorMessage", errorMessage);
+			getServletContext().getRequestDispatcher("/error.jsp")
+					.forward(request, response);
+		} 
 
 	}
 }

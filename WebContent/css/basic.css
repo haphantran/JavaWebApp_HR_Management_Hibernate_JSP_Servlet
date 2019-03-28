@@ -24,7 +24,6 @@ h1 {
 	font-size: 18px;
 	font-weight: 600;
 	text-transform: uppercase;
-	display: inline-block;
 	margin: 20px 10px 10px;
 	color: darkblue;
 }
@@ -33,8 +32,6 @@ h2 {
 	text-align: center;
 	font-size: 18px;
 	font-weight: 600;
-	text-transform: uppercase;
-	display: inline-block;
 	margin: 10px;
 	color: #cccccc;
 }
@@ -63,7 +60,7 @@ h2 {
 }
 
 
-#formContent {
+#formContent, .small {
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
 	background: #fff;
