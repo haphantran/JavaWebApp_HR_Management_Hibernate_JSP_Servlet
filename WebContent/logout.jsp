@@ -23,12 +23,7 @@
 </head>
 <body>
 	<%@ include file="navigation.jsp"%>
-	<%
-		if (session != null) {
-			if (session.getAttribute("user") != null) {
-				response.sendRedirect("index.jsp");
-			} else {
-	%>
+	
 	<div class="container">
 		<div class="wrapper fadeInDown">
 			<div id="formContent">
@@ -41,9 +36,6 @@
 	</div>
 	<%@ include file="footer.jsp"%>
 
-	<%
-		}
-		}
-	%>
+	
 </body>
 </html>
