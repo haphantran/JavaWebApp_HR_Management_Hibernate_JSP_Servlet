@@ -55,10 +55,12 @@
 				</thead>
 				<tbody>
 					<%
-						for (Employee employee : empList) {						
+						for (Employee employee : empList) {
+									int empId = employee.getEmployeeId();
+									
 					%>
 					<tr>
-						<td><a href=""><%=employee.getEmployeeId()%></a></td>
+						<td><a href="editEmployee.jsp?id=<%=empId%>"><%=empId%></a></td>
 						<td><%=employee.getFirstName()%></td>
 						<td><%=employee.getLastName()%></td>
 						<td><%=employee.getEmail()%></td>
@@ -84,10 +86,11 @@
 	<%
 		} else {
 				response.sendRedirect("login.jsp");
+
 			}
 		}
 	%>
-
+	}
 
 </body>
 </html>

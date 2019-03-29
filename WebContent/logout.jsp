@@ -34,8 +34,6 @@
 			<div id="formContent">
 				<h1>You have logged out</h1>
 
-				<!-- need to clear the context or the entity -->
-
 				<input class="fadeIn first" type="button" value="Login"
 					onclick="window.location.href='login.jsp'">
 			</div>

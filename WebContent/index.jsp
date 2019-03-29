@@ -32,15 +32,13 @@
 						if (session.getAttribute("user") != null) {
 				%>
 
-
 				<h1>Show Employees</h1>
 				<form action="GetEmployeeListServlet" method="post">
 					<input type="text" name="departmentId" value=""
 						placeholder="Department ID">
 					<input type="submit"
-						value="Show Department Employees">
-					<input type="submit"
-						value="Show All Employees">
+						value="Show Employees">
+						<h2>Enter the department number to show the department employees or leave it empty to show all employees</h2>
 				</form>
 
 
@@ -52,7 +50,7 @@
 				<h1>Welcome to HR Management System</h1>
 				<img class="fadeIn first" style="height: 200px" src="images/hr.jpeg"
 					alt="HR">
-
+				<input class="fadeIn first" type="button" value="Login"	onclick="window.location.href='login.jsp'">
 				<%
 					}
 					}
