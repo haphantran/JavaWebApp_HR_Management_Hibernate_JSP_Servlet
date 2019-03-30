@@ -35,7 +35,7 @@
 				<h1>Show Employees</h1>
 				<form action="GetEmployeeListServlet" method="post">
 					<input type="text" name="departmentId" placeholder="Department ID"> 
-					<input type="submit" value="Show Department Employees">
+						<input type="submit" value="Show Department Employees">
 				</form>
 				<form action="GetEmployeeListServlet" method="post">
 					<input type="hidden" name="departmentId"> 

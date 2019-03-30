@@ -10,7 +10,6 @@
 		<ul class="nav navbar-nav">
 
 			<li><a href="index.jsp">Employee List</a></li>
-			<li><a href="login.jsp">Employee List</a></li>
 			<li><a href="addEmployee.jsp">New Employee</a></li>
 			<li><a href="">Search Employee</a></li>
 		</ul>
