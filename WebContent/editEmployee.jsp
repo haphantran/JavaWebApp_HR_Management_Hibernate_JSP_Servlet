@@ -58,7 +58,17 @@
 
 		<div class="main">
 			<h1>Edit Employee</h1>
-			<form class="" action="" method="post">
+			
+			<script>
+			function editEmp (){
+				document.getElementById("editEmployee").action="EditEmployeeServlet";
+			}
+			function deleteEmp (){
+				document.getElementById("editEmployee").action="DeleteEmployeeServlet";
+			}
+			</script>
+			
+			<form id="editEmployee" action="" method="post">
 				<table>
 					<tr>
 						<td>Employee Id:</td>
@@ -117,8 +127,9 @@
 					</tr>
 
 				</table>
-				<input type="submit" name="" value="Add Employee"> <input
-					type="reset" name="" value="Reset value">
+				<input class="smallButton"type="submit"  value="Edit Employee" onclick="editEmp()"> 
+				<input class="smallButton" type="submit"  value="Delete Employee" onclick="deleteEmp()">
+				<input class="smallButton" type="button"  onclick="javascript:history.back(-1);" value="Return">
 			</form>
 
 		</div>

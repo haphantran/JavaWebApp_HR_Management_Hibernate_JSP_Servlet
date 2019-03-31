@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Error</title>
+<title>Message</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
@@ -22,8 +22,8 @@
 
 
 	<%
-		String errorMessage = (String) request.getAttribute("errorMessage");
-		if (errorMessage != null) {
+		String message = (String) request.getAttribute("message"); // the execution result message received from servlet
+		if (message != null) {
 	%>
 	<%@ include file="navigation.jsp"%>
 
@@ -31,8 +31,9 @@
 	<div class="container">
 
 		<div class="main">
-			<h2 style="color: red;"><%=errorMessage%></h2>
-			<input class="smallButton" type="button" name="Submit" onclick="javascript:history.back(-1);" value="Return">
+			<h2 style="color: black;"><%=message%></h2>
+			<input class="smallButton" class="fadeIn first" type="button" value="Return"
+					onclick="window.location.href='index.jsp'">
 		</div>
 	</div>
 

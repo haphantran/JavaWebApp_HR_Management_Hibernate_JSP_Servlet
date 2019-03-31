@@ -32,7 +32,7 @@
 				<h5 class="text-uppercase">Links</h5>
 
 				<ul class="list-unstyled">
-					<li><a href="http://zenit.senecac.on.ca/~uli705_183a26/">Pei Zhang</a></li>
+					<li><a href="https://matrix.senecacollege.ca/~pzhang64/">Pei Zhang</a></li>
 					<li><a href="#!">Haphan Tran</a></li>
 
 				</ul>

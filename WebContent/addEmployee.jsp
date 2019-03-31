@@ -92,8 +92,8 @@
 					</tr>
 
 				</table>
-				<input type="submit" name="" value="Add Employee">
-				<input type="reset" name="" value="Reset value">
+				<input class="smallButton" type="submit" name="" value="Add Employee">
+				<input class="smallButton" type="reset" name="" value="Reset value">
 			</form>
 
 		</div>
