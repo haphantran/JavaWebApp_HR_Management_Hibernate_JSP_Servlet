@@ -6,11 +6,13 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.jdbc.ReturningWork;
 import org.hibernate.query.Query;
 
+import bean.Department;
 import bean.Employee;
  
 
@@ -72,4 +74,32 @@ public class DAO {
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("null")
+	public List<Department> getAllDepartmentIdAndName(){
+		List<Department> deptList = null;
+		Session session = HibernateUtil.openSession();
+		@SuppressWarnings("rawtypes")
+		SQLQuery query = session.createSQLQuery("Select DEPARTMENT_ID, DEPARTMENT_NAME FROM departments");
+		List<Object[]> rows = query.list();
+		for (Object[] row : rows) {
+			Department dept =  new Department();
+			dept.setId(Integer.parseInt(row[0].toString()));
+			dept.setName(row[1].toString());
+			deptList.add(dept);
+		}
+		return deptList;		
+	}
+	
+	public List<String> getAllJobId() {
+		List<String> result = null;
+		List<Department> deptList = null;
+		Session session = HibernateUtil.openSession();
+		@SuppressWarnings("rawtypes")
+		SQLQuery query = session.createSQLQuery("Select job_id FROM jobs");
+		List<Object[]> rows = query.list();
+		for (Object[] row : rows) {
+			result.add(row[0].toString());			
+		}
+		return result;
+	}
 }
