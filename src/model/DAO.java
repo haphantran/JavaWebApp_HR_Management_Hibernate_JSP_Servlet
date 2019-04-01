@@ -79,7 +79,8 @@ public class DAO {
 		List<Department> deptList = null;
 		Session session = HibernateUtil.openSession();
 		@SuppressWarnings("rawtypes")
-		SQLQuery query = session.createSQLQuery("Select DEPARTMENT_ID, DEPARTMENT_NAME FROM departments");
+		Query query = session.createSQLQuery("Select DEPARTMENT_ID, DEPARTMENT_NAME FROM departments");
+		@SuppressWarnings("unchecked")
 		List<Object[]> rows = query.list();
 		for (Object[] row : rows) {
 			Department dept =  new Department();
@@ -95,11 +96,10 @@ public class DAO {
 		List<Department> deptList = null;
 		Session session = HibernateUtil.openSession();
 		@SuppressWarnings("rawtypes")
-		SQLQuery query = session.createSQLQuery("Select job_id FROM jobs");
-		List<Object[]> rows = query.list();
-		for (Object[] row : rows) {
-			result.add(row[0].toString());			
-		}
+		Query query = session.createSQLQuery("Select job_id FROM jobs");
+
+		result = query.list();
+		System.out.println(result);	
 		return result;
 	}
 }

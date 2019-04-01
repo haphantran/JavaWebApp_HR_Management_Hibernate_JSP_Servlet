@@ -1,5 +1,7 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="bean.Employee,java.util.List,model.DAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +27,8 @@
 			if (session.getAttribute("user") != null) {
 	%>
 	<%@ include file="navigation.jsp"%>
+	
+
 
 
 	<div class="container">
@@ -53,29 +57,18 @@
 							placeHolder="Hire Date"></td>
 
 						<td>Job ID:</td>
+							<%  DAO dao = new DAO();
+								List<String> jobList = dao.getAllJobId();
+									%>
+								
 						<td><select name="jobId">
 								<option></option>
-								<option>AD_PRES</option>
-								<option>AD_VP</option>
-								<option>AD_ASST</option>
-								<option>FI_MGR</option>
-								<option>FI_ACCOUNT</option>
-								<option>AC_MGR</option>
-								<option>AC_ACCOUNT</option>
-								<option>SA_MAN</option>
-								<option>SA_REP</option>
-								<option>PU_MAN</option>
-								<option>PU_CLERK</option>
-								<option>ST_MAN</option>
-								<option>ST_CLERK</option>
-								<option>SH_CLERK</option>
-								<option>IT_PROG</option>
-								<option>MK_MAN</option>
-								<option>MK_REP</option>
-								<option>HR_REP</option>
-								<option>PR_REP</option>
-						</select></td>
+								<%	for (String jobID : jobList){%>								
+								<option><%=jobID%></option>						
+						<% }	%>
+							</select></td>
 					</tr>
+
 					<tr>
 						<td>Salary:</td>
 						<td><input type="text" name="salary"></td>
