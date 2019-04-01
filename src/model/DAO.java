@@ -80,6 +80,7 @@ public class DAO {
 		Session session = HibernateUtil.openSession();
 		@SuppressWarnings("rawtypes")
 		Query query = session.createSQLQuery("Select DEPARTMENT_ID, DEPARTMENT_NAME FROM departments");
+		@SuppressWarnings("unchecked")
 		List<Object[]> rows = query.list();
 		for (Object[] row : rows) {
 			Department dept =  new Department();
