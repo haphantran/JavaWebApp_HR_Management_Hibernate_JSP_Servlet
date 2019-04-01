@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SQLQuery;
@@ -76,7 +77,7 @@ public class DAO {
 
 	@SuppressWarnings("null")
 	public List<Department> getAllDepartmentIdAndName(){
-		List<Department> deptList = null;
+		List<Department> deptList = new ArrayList<>();
 		Session session = HibernateUtil.openSession();
 		@SuppressWarnings("rawtypes")
 		SQLQuery query = session.createSQLQuery("Select DEPARTMENT_ID, DEPARTMENT_NAME FROM departments");
@@ -91,8 +92,8 @@ public class DAO {
 	}
 	
 	public List<String> getAllJobId() {
-		List<String> result = null;
-		List<Department> deptList = null;
+		List<String> result = new ArrayList<>();
+		
 		Session session = HibernateUtil.openSession();
 		@SuppressWarnings("rawtypes")
 		SQLQuery query = session.createSQLQuery("Select job_id FROM jobs");
