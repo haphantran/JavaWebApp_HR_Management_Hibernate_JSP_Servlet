@@ -1,7 +1,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="bean.Employee,java.util.List,model.DAO"%>
+<%@ page import="bean.Employee,bean.Department,java.util.List,model.DAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +25,12 @@
 	<%
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
+				DAO dao = new DAO();
+				List<String> jobList = dao.getAllJobId();
+				List<Department> deptList = dao.getAllDepartmentIdAndName();
 	%>
 	<%@ include file="navigation.jsp"%>
-	
+
 
 
 
@@ -57,16 +60,18 @@
 							placeHolder="Hire Date"></td>
 
 						<td>Job ID:</td>
-							<%  DAO dao = new DAO();
-								List<String> jobList = dao.getAllJobId();
-									%>
-								
+
+
 						<td><select name="jobId">
 								<option></option>
-								<%	for (String jobID : jobList){%>								
-								<option><%=jobID%></option>						
-						<% }	%>
-							</select></td>
+								<%
+									for (String jobID : jobList) {
+								%>
+								<option><%=jobID%></option>
+								<%
+									}
+								%>
+						</select></td>
 					</tr>
 
 					<tr>
@@ -80,13 +85,23 @@
 						<td>Manager ID:</td>
 						<td><input type="text" name="managerId"></td>
 
-						<td>Department ID:</td>
-						<td><input type="text" name="departmentId"></td>
+						<td>Department:</td>
+						<td><select name="dept">
+								<option></option>
+								<%
+									for (Department dept : deptList) {
+								%>
+								<option><%=dept.getName()%></option>
+								<%
+									}
+								%>
+						</select></td>
 					</tr>
 
 				</table>
-				<input class="smallButton" type="submit" name="" value="Add Employee">
-				<input class="smallButton" type="reset" name="" value="Reset value">
+				<input class="smallButton" type="submit" name=""
+					value="Add Employee"> <input class="smallButton"
+					type="reset" name="" value="Reset value">
 			</form>
 
 		</div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.List,java.util.ArrayList"%>
+<%@ page
+	import="java.util.List,java.util.ArrayList,bean.Department,model.DAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,31 +26,16 @@
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
 
-				String id = request.getParameter("id");
+				int id = Integer.parseInt(request.getParameter("id"));
 
-				//testing part begin
-				String jobId = "SA_MAN";//assume the employee has this job id
+				//get the employee with the employee id
+				DAO dao = new DAO();
+				Employee employee = dao.getEmployeeByID(id);
 
-				List<String> jobList = new ArrayList<>();
-				jobList.add("AD_PRES");
-				jobList.add("AD_VP");
-				jobList.add("AD_ASST");
-				jobList.add("FI_MGR");
-				jobList.add("FI_ACCOUNT");
-				jobList.add("AC_MGR");
-				jobList.add("AC_ACCOUNT");
-				jobList.add("SA_MAN");
-				jobList.add("SA_REP");
-				jobList.add("PU_MAN");
-				jobList.add("PU_CLERK");
-				jobList.add("ST_MAN");
-				jobList.add("ST_CLERK");
-				jobList.add("SH_CLERK");
-				jobList.add("IT_PROG");
-				jobList.add("MK_MAN");
-				jobList.add("MK_REP");
-				jobList.add("HR_REP");
-				jobList.add("PR_REP"); //testing part end
+				//get the job list and department list
+
+				List<String> jobList = dao.getAllJobId();
+				List<Department> deptList = dao.getAllDepartmentIdAndName();
 	%>
 	<%@ include file="navigation.jsp"%>
 
@@ -58,16 +44,16 @@
 
 		<div class="main">
 			<h1>Edit Employee</h1>
-			
+
 			<script>
-			function editEmp (){
-				document.getElementById("editEmployee").action="EditEmployeeServlet";
-			}
-			function deleteEmp (){
-				document.getElementById("editEmployee").action="DeleteEmployeeServlet";
-			}
+				function editEmp() {
+					document.getElementById("editEmployee").action = "EditEmployeeServlet";
+				}
+				function deleteEmp() {
+					document.getElementById("editEmployee").action = "DeleteEmployeeServlet";
+				}
 			</script>
-			
+
 			<form id="editEmployee" action="" method="post">
 				<table>
 					<tr>
@@ -78,33 +64,35 @@
 					</tr>
 					<tr>
 						<td>First name:</td>
-						<td><input type="text" name="firstName"></td>
+						<td><input type="text" name="firstName"
+							value="<%=employee.getFirstName()%>"></td>
 						<td>Last name:</td>
-						<td><input type="text" name="lastName"></td>
+						<td><input type="text" name="lastName"
+							value="<%=employee.getLastName()%>"></td>
 					</tr>
 
 					<tr>
 						<td>Email:</td>
-						<td><input type="text" name="email"></td>
+						<td><input type="text" name="email"
+							value="<%=employee.getEmail()%>"></td>
 						<td>Phone Number:</td>
-						<td><input type="text" name="phoneNumber"></td>
+						<td><input type="text" name="phoneNumber"
+							value="<%=employee.getPhoneNumber()%>"></td>
 					</tr>
 
 					<tr>
 						<td>Hire Date:</td>
 						<td><input type="date" name="hireDate"
-							placeHolder="Hire Date"></td>
+							placeHolder="Hire Date" value="<%=employee.getHireDate()%>"></td>
 
 						<td>Job ID:</td>
-						<td><select name="jobId"
-							value="<%=request.getParameter("jobId")%>">
+						<td><select name="jobId">
 								<option></option>
 								<%
 									for (String job : jobList) {
-												if (job.equals(jobId)) {
+												if (job.equals(employee.getJobId())) {
 													out.print("<option selected=\"selected\">" + job + "</option>");
-												}
-												else {
+												} else {
 													out.print("<option>" + job + "</option>");
 												}
 											}
@@ -113,23 +101,39 @@
 					</tr>
 					<tr>
 						<td>Salary:</td>
-						<td><input type="text" name="salary"></td>
+						<td><input type="text" name="salary"
+							value="<%=employee.getSalary()%>"></td>
 
 						<td>Commission:</td>
-						<td><input type="text" name="commissionPct"></td>
+						<td><input type="text" name="commissionPct"
+							value="<%=employee.getCommissionPct()%>"></td>
 					</tr>
 					<tr>
 						<td>Manager ID:</td>
-						<td><input type="text" name="managerId"></td>
+						<td><input type="text" name="managerId"
+							value="<%=employee.getManagerId()%>"></td>
 
-						<td>Department ID:</td>
-						<td><input type="text" name="departmentId"></td>
+						<td>Department:</td>
+						<td><select name="dept">
+								<option></option>
+								<%
+									for (Department dept : deptList) {
+												if (dept.getId() == employee.getDepartmentId()){
+													out.print("<option selected=\"selected\">"  + dept.getName()+ "</option>");
+												} else {
+													out.print("<option>" + dept.getName() + "</option>");
+												}
+											}
+								%>
+						</select></td>
 					</tr>
 
 				</table>
-				<input class="smallButton"type="submit"  value="Edit Employee" onclick="editEmp()"> 
-				<input class="smallButton" type="submit"  value="Delete Employee" onclick="deleteEmp()">
-				<input class="smallButton" type="button"  onclick="javascript:history.back(-1);" value="Return">
+				<input class="smallButton" type="submit" value="Edit Employee"
+					onclick="editEmp()"> <input class="smallButton"
+					type="submit" value="Delete Employee" onclick="deleteEmp()">
+				<input class="smallButton" type="button"
+					onclick="javascript:history.back(-1);" value="Return">
 			</form>
 
 		</div>
