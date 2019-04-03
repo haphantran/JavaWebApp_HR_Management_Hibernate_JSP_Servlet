@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.HibernateUtil;
+
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -40,8 +42,10 @@ public class LogoutServlet extends HttpServlet {
 		// session.setAttribute("user", null);
 		session.removeAttribute("user");
 		session.getMaxInactiveInterval();
+		HibernateUtil.closeSessionFactory();
 		response.sendRedirect("logout.jsp");
-		out.println("thanq you!!, Your session was destroyed successfully!!");
+		
+		out.println("thank you!!, Your session was destroyed successfully!!");
 	}
 
 	/**
