@@ -38,7 +38,7 @@
 
 		<div class="main">
 			<h1>Add a new Employee</h1>
-			<form class="" action="AddEmployee" method="post">
+			<form class="" action="AddOrUpdateEmployeeServlet" method="post">
 				<table>
 					<tr>
 						<td>First name:</td>
@@ -100,7 +100,8 @@
 
 				</table>
 				<input class="smallButton" type="submit" name=""
-					value="Add Employee"> <input class="smallButton"
+					value="Add Employee"> 
+				<input class="smallButton"
 					type="reset" name="" value="Reset value">
 			</form>
 

@@ -44,17 +44,7 @@
 
 		<div class="main">
 			<h1>Edit Employee</h1>
-
-			<script>
-				function editEmp() {
-					document.getElementById("editEmployee").action = "EmployeeServlet";
-				}
-				function deleteEmp() {
-					document.getElementById("editEmployee").action = "EmployeeServlet";
-				}
-			</script>
-
-			<form id="editEmployee" action="EmployeeServlet" method="post">
+			<form id="editEmployee" action="AddOrUpdateEmployeeServlet" method="post">
 				<table>
 					<tr>
 						<td>Employee Id:</td>
@@ -118,9 +108,9 @@
 						<td><select name="dept">
 								<option></option>
 								<%
-								//display department name if the employee has a department.
-									for (Department dept : deptList) {
-												if (employee.getDepartmentId()!= null && dept.getId() == employee.getDepartmentId()) {
+									//display department name if the employee has a department.
+											for (Department dept : deptList) {
+												if (employee.getDepartmentId() != null && dept.getId() == employee.getDepartmentId()) {
 													out.print("<option selected=\"selected\">" + dept.getName() + "</option>");
 												} else {
 													out.print("<option>" + dept.getName() + "</option>");
@@ -131,17 +121,15 @@
 					</tr>
 
 				</table>
-		
-				<input class="smallButton" type="submit" value="Edit Employee"
-					onclick="editEmp()"> <input class="smallButton"
-					type="submit" value="Delete Employee" onclick="deleteEmp()">
-					
-    <!-- make a second form when user click delete, send the hidden input -->
-    	<input type="hidden" name="singleChoice" value="delete">
-				<input class="smallButton" type="button"
-					onclick="javascript:history.back(-1);" value="Return">
+				<input class="smallButton" type="submit" value="Edit Employee"> 
+				
 			</form>
-
+			<!-- a second form when user click delete, send the hidden input -->
+			<form>
+				<input type="hidden" name="singleChoice" value="delete"> 
+				<input class="smallButton" type="submit" value="Delete Employee"">
+			</form>
+			<input class="smallButton" type="button" onclick="javascript:history.back(-1);" value="Return">
 		</div>
 	</div>
 

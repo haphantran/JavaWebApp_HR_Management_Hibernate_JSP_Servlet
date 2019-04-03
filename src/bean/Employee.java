@@ -17,7 +17,7 @@ import java.util.Date;
 	@org.hibernate.annotations.NamedQuery(name="Employee.findEmployeeByDeptId", 
                 							query="FROM Employee WHERE departmentId = :deptId"),
 	@org.hibernate.annotations.NamedQuery(name="Employee.findEmployeeIdBySearchTerm", 
-	query="FROM Employee WHERE firstName like :searchTerm OR lastName like :searchTerm OR email LIKE :searchTerm or phoneNumber like :searchTerm ORdepartmentId Like :searchTerm")
+	query="FROM Employee WHERE firstName like :searchTerm OR lastName like :searchTerm OR email LIKE :searchTerm or phoneNumber like :searchTerm OR departmentId Like :searchTerm")
 })
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
