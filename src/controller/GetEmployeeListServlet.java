@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 import bean.Employee;
 import model.DAO;
 
@@ -41,20 +43,22 @@ public class GetEmployeeListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Employee> employeeList;
-		String deptIDString = request.getParameter("departmentId");
-		System.out.println(deptIDString +  " depid");
+		List<Employee> employeeList = null;
+		String listChoice = request.getParameter("listChoice");
 		DAO dao = new DAO();
-		if(deptIDString.length() != 0) { //input a deptID
-			int deptId = Integer.parseInt(deptIDString);
-			employeeList = dao.getEmployeeByDeptId(deptId);
-		} else { //no deptID, show all emp
-			employeeList = dao.getAllEmployee();
-			for (Employee employee : employeeList) {
-				
-			}
-
+		switch (listChoice) {
+			case "getByDept":
+				String deptIDString = request.getParameter("departmentId");
+				int deptId = Integer.parseInt(deptIDString);
+				employeeList = dao.getEmployeeByDeptId(deptId);
+				break;
+			case "getBySearchTerm":
+				employeeList= dao.getEmployeeBySearchTerm(request.getParameter("searchTerm"));
+				break;
+			default: //getAll or default, return all Employee;
+				employeeList = dao.getAllEmployee();
 		}
+		
 		request.setAttribute("employeeList", employeeList);
 		getServletContext().getRequestDispatcher("/employeeList.jsp").forward(request, response);
 	}

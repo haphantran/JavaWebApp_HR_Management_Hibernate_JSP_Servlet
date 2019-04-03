@@ -34,11 +34,12 @@
 
 				<h1>Show Employees</h1>
 				<form action="GetEmployeeListServlet" method="post">
-					<input type="text" name="departmentId" placeholder="Department ID"> 
+					<input type="text" name="departmentId" placeholder="Department ID">
+						<input type="hidden" name="listChoice" value ="getByDept" > 
 						<input type="submit" value="Show Department Employees">
 				</form>
 				<form action="GetEmployeeListServlet" method="post">
-					<input type="hidden" name="departmentId"> 
+					<input type="hidden" name="listChoice" value ="getAll" > 
 					<input type="submit" value="Show All Employees">
 				</form>
 

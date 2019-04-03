@@ -131,12 +131,13 @@
 					</tr>
 
 				</table>
+		
 				<input class="smallButton" type="submit" value="Edit Employee"
 					onclick="editEmp()"> <input class="smallButton"
 					type="submit" value="Delete Employee" onclick="deleteEmp()">
 					
     <!-- make a second form when user click delete, send the hidden input -->
-    	<input type="hidden" name="deleteEmp" value="yes">
+    	<input type="hidden" name="singleChoice" value="delete">
 				<input class="smallButton" type="button"
 					onclick="javascript:history.back(-1);" value="Return">
 			</form>

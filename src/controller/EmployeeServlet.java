@@ -64,6 +64,8 @@ public class EmployeeServlet extends HttpServlet {
 		String jobId;
 		Integer managerId;
 		Integer departmentId = 0;
+		
+		
 
 		if (request.getParameter("employeeId") !=null) {
 			id = Integer.parseInt(request.getParameter("employeeId"));	
@@ -94,23 +96,22 @@ public class EmployeeServlet extends HttpServlet {
 				break;
 			}
 		}		
-
+		
 		HttpSession session = request.getSession(true);
-		Employee emp = null;
+		Employee emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
+				managerId, departmentId);
 		try {
 			
-			if (id ==0 ) {
-				emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
+			String singleChoice = request.getParameter("singleChoice");
+			if (singleChoice.equalsIgnoreCase("delele")) {//delete
+				dao.deleteEmployee(emp);				
+			} else { //add or update
+				//id = 0 mean add new  employee without ID field
+				if (id ==0) emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 						managerId, departmentId);
 				dao.addOrUpdateEmployee(emp);
-			}else {
-				emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
-						managerId, departmentId);
-				if (request.getParameter("deleteEmp").equalsIgnoreCase("yes")) {
-					dao.deleteEmployee(emp);
-				} else dao.addOrUpdateEmployee(emp);					
 			}
-
+			
 			response.sendRedirect("index.jsp");
 
 		} catch (Exception e) {

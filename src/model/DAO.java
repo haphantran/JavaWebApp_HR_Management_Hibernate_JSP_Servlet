@@ -68,6 +68,13 @@ public class DAO {
 		query.setParameter("deptId", deptId);
 		return query.getResultList();
 	}
+	public List<Employee> getEmployeeBySearchTerm(String searchTerm){
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		Query<Employee> query = session.createNamedQuery("Employee.findEmployeeIdBySearchTerm", Employee.class);
+		query.setParameter("searchTerm", "%" +searchTerm +"%");
+		return query.getResultList();
+	}
 	
 	public List<Employee> getAllEmployee(){
 		Session session = HibernateUtil.getSessionFactory().openSession();	
