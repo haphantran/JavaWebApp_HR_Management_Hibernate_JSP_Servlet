@@ -20,7 +20,7 @@ import bean.Employee;
 public class DAO {
 	
 	public Integer checkCredential(String username, String password) {		 
-			Session session = HibernateUtil.openSession();			
+			Session session = HibernateUtil.getSessionFactory().openSession();			
 			Integer result = session.doReturningWork(new ReturningWork <Integer> () {
 				public Integer execute(Connection conn) throws SQLException {
 					//call the security function to check				 
@@ -41,36 +41,36 @@ public class DAO {
 	}	
 	public  void deleteEmployee(Employee employee) {
 
-		Session session = HibernateUtil.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 		Transaction trx = session.beginTransaction();
 		session.remove(employee);
 		trx.commit();
 }
 	public  void addOrUpdateEmployee(Employee employee) {
-
-			Session session = HibernateUtil.openSession();
-			Transaction trx = session.beginTransaction();
-			session.saveOrUpdate(employee);
-			trx.commit();
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();	
+		Transaction trx = session.beginTransaction();
+		session.saveOrUpdate(employee);
+		trx.commit();
 	}
 	
 	public Employee getEmployeeByID(int empid) {
 		
-		Session session = HibernateUtil.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 
 		Employee emp = (Employee) session.get(Employee.class, empid);
 		return emp;		
 	}
 	public List<Employee> getEmployeeByDeptId(int deptId){
 	
-		Session session = HibernateUtil.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 		Query<Employee> query = session.createNamedQuery("Employee.findEmployeeByDeptId", Employee.class);
 		query.setParameter("deptId", deptId);
 		return query.getResultList();
 	}
 	
 	public List<Employee> getAllEmployee(){
-		Session session = HibernateUtil.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 		Query<Employee> query = session.createNamedQuery("Employee.findAll", Employee.class);		
 		return query.getResultList();
 	}
@@ -78,7 +78,7 @@ public class DAO {
 	@SuppressWarnings("null")
 	public List<Department> getAllDepartmentIdAndName(){
 		List<Department> deptList = new ArrayList<>();
-		Session session = HibernateUtil.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 		@SuppressWarnings("rawtypes")
 		Query query = session.createSQLQuery("Select DEPARTMENT_ID, DEPARTMENT_NAME FROM departments");
 		@SuppressWarnings("unchecked")
@@ -94,7 +94,7 @@ public class DAO {
 	
 	public List<String> getAllJobId() {
 		List<String> result = null;
-		Session session = HibernateUtil.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();	
 		@SuppressWarnings("rawtypes")
 		Query query = session.createSQLQuery("Select job_id FROM jobs");
 
