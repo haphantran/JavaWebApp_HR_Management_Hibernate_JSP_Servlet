@@ -36,7 +36,6 @@ public class DAO {
 					return stmt.getInt(1);		
 				}											
 			});
-				System.out.println(result);
 		return result;
 	}	
 	public  void deleteEmployee(Employee employee) {
@@ -68,11 +67,25 @@ public class DAO {
 		query.setParameter("deptId", deptId);
 		return query.getResultList();
 	}
+	@SuppressWarnings("null")
 	public List<Employee> getEmployeeBySearchTerm(String searchTerm){
+		searchTerm = searchTerm.toLowerCase();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		
-		Session session = HibernateUtil.getSessionFactory().openSession();	
+		DAO dao = new DAO();
+		List<Department> deptListAll = dao.getAllDepartmentIdAndName();
+		List<Integer> deptIdList = new ArrayList<Integer>();;
+		for (Department department : deptListAll) {
+			if (department.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
+				System.out.println(department.getName());
+				System.out.println(department.getId());
+				deptIdList.add(department.getId());
+			}
+		}
 		Query<Employee> query = session.createNamedQuery("Employee.findEmployeeIdBySearchTerm", Employee.class);
 		query.setParameter("searchTerm", "%" +searchTerm +"%");
+		query.setParameterList("deptIDs", deptIdList);
+		
 		return query.getResultList();
 	}
 	
