@@ -75,10 +75,9 @@ public class DAO {
 		DAO dao = new DAO();
 		List<Department> deptListAll = dao.getAllDepartmentIdAndName();
 		List<Integer> deptIdList = new ArrayList<Integer>();;
+		deptIdList.add(0);
 		for (Department department : deptListAll) {
 			if (department.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
-				System.out.println(department.getName());
-				System.out.println(department.getId());
 				deptIdList.add(department.getId());
 			}
 		}

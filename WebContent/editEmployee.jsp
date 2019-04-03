@@ -44,7 +44,7 @@
 
 		<div class="main">
 			<h1>Edit Employee</h1>
-			<form id="editEmployee" action="AddOrUpdateEmployeeServlet" method="post">
+			<form id="editEmployee" action="EmployeeServlet" method="post">
 				<table>
 					<tr>
 						<td>Employee Id:</td>
@@ -121,6 +121,7 @@
 					</tr>
 
 				</table>
+				<input type="hidden" name="singleChoice" value="update"> 
 				<input class="smallButton" type="submit" value="Edit Employee"> 
 				
 			</form>
