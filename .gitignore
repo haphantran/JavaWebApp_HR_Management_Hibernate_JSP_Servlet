@@ -1,1 +1,3 @@
 /build/
+/src/hibernate.cfg.xml
+/src/bean/employee.hbm.xml
