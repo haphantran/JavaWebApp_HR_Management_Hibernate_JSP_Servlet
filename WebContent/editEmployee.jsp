@@ -47,18 +47,18 @@
 
 			<script>
 				function editEmp() {
-					document.getElementById("editEmployee").action = "EditEmployeeServlet";
+					document.getElementById("editEmployee").action = "EmployeeServlet";
 				}
 				function deleteEmp() {
-					document.getElementById("editEmployee").action = "DeleteEmployeeServlet";
+					document.getElementById("editEmployee").action = "EmployeeServlet";
 				}
 			</script>
 
-			<form id="editEmployee" action="" method="post">
+			<form id="editEmployee" action="EmployeeServlet" method="post">
 				<table>
 					<tr>
 						<td>Employee Id:</td>
-						<td><input type="text" name="firstName" readonly="readonly"
+						<td><input type="text" name="employeeId" readonly="readonly"
 							value="<%=id%>"></td>
 
 					</tr>
@@ -134,6 +134,9 @@
 				<input class="smallButton" type="submit" value="Edit Employee"
 					onclick="editEmp()"> <input class="smallButton"
 					type="submit" value="Delete Employee" onclick="deleteEmp()">
+					
+    <!-- make a second form when user click delete, send the hidden input -->
+    	<input type="hidden" name="deleteEmp" value="yes">
 				<input class="smallButton" type="button"
 					onclick="javascript:history.back(-1);" value="Return">
 			</form>

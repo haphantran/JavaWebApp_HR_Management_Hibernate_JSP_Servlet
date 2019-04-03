@@ -58,6 +58,23 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
+	public Employee(Integer employeeId, String firstName, String lastName, String email, Date hireDate,
+			String phoneNumber, Double salary, Double commissionPct, String jobId, Integer managerId,
+			Integer departmentId) {
+		super();
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.hireDate = hireDate;
+		this.phoneNumber = phoneNumber;
+		this.salary = salary;
+		this.commissionPct = commissionPct;
+		this.jobId = jobId;
+		this.managerId = managerId;
+		this.departmentId = departmentId;
+	}
+
 
 
 
@@ -127,6 +144,9 @@ public class Employee implements Serializable {
 	}
 
 
+
+
+	
 
 
 	public void setEmail(String email) {

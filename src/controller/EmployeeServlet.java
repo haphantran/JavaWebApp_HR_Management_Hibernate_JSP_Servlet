@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Department;
 import bean.Employee;
 import model.DAO;
 
 /**
  * Servlet implementation class HRServlet
  */
-@WebServlet("/AddEmployeeServlet")
-public class AddEmployeeServlet extends HttpServlet {
+@WebServlet("/AddOrUpdateEmployeeServlet")
+public class EmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddEmployeeServlet() {
+	public EmployeeServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,7 +48,12 @@ public class AddEmployeeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+			
+			
+
+	
+		int id = 0;
 		String firstName;
 		String lastName;
 		String email;
@@ -56,8 +63,12 @@ public class AddEmployeeServlet extends HttpServlet {
 		Double commissionPct;
 		String jobId;
 		Integer managerId;
-		Integer departmentId;
+		Integer departmentId = 0;
 
+		if (request.getParameter("employeeId") !=null) {
+			id = Integer.parseInt(request.getParameter("employeeId"));	
+		}
+		
 		firstName = request.getParameter("firstName");
 		lastName = request.getParameter("lastName");
 		email = request.getParameter("email");
@@ -73,20 +84,43 @@ public class AddEmployeeServlet extends HttpServlet {
 		commissionPct = Double.parseDouble(request.getParameter("commissionPct"));
 		jobId = request.getParameter("jobId");
 		managerId = Integer.parseInt(request.getParameter("managerId"));
-		departmentId = Integer.parseInt(request.getParameter("departmentId"));
-	
+		String deptname = request.getParameter("dept");
+		
+		DAO dao = new DAO();
+		List<Department> deptList = dao.getAllDepartmentIdAndName();
+		for (Department department : deptList) {
+			if (department.getName().equalsIgnoreCase(deptname)) {
+				departmentId = department.getId();				
+				break;
+			}
+		}		
+
 		HttpSession session = request.getSession(true);
+		Employee emp = null;
 		try {
-			DAO dao = new DAO();
-			Employee emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
-					managerId, departmentId);
-			dao.addEmployee(emp);
-			response.sendRedirect("addSuccess");
+			
+			if (id ==0 ) {
+				emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
+						managerId, departmentId);
+				dao.addOrUpdateEmployee(emp);
+			}else {
+				emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
+						managerId, departmentId);
+				if (request.getParameter("deleteEmp").equalsIgnoreCase("yes")) {
+					dao.deleteEmployee(emp);
+				} else dao.addOrUpdateEmployee(emp);					
+			}
+
+			response.sendRedirect("index.jsp");
 
 		} catch (Exception e) {
-			e.getStackTrace();
+			String errorMessage = "Cannot add or update employee";
+			request.setAttribute("errorMessage", errorMessage);
+			getServletContext().getRequestDispatcher("/error.jsp")
+					.forward(request, response);
 		}
 
 	}
+
 
 }

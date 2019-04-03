@@ -7,7 +7,6 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.jdbc.ReturningWork;
@@ -20,11 +19,8 @@ import bean.Employee;
 
 public class DAO {
 	
-	public Integer checkCredential(String username, String password) {
-
-		 
-			Session session = HibernateUtil.openSession();
-			
+	public Integer checkCredential(String username, String password) {		 
+			Session session = HibernateUtil.openSession();			
 			Integer result = session.doReturningWork(new ReturningWork <Integer> () {
 				public Integer execute(Connection conn) throws SQLException {
 					//call the security function to check				 
@@ -32,12 +28,10 @@ public class DAO {
 					CallableStatement stmt;
 					
 					stmt = conn.prepareCall(" {? = call p_security.F_SECURITY(?,?)}");
-					
 					stmt.registerOutParameter (1,Types.INTEGER);
 					stmt.setString(2, username);
 					stmt.setString(3, password);
-					stmt.execute();
-			
+					stmt.execute();		
 					
 					return stmt.getInt(1);		
 				}											
@@ -45,12 +39,18 @@ public class DAO {
 				System.out.println(result);
 		return result;
 	}	
+	public  void deleteEmployee(Employee employee) {
 
-	public  void addEmployee(Employee employee) {
+		Session session = HibernateUtil.openSession();
+		Transaction trx = session.beginTransaction();
+		session.remove(employee);
+		trx.commit();
+}
+	public  void addOrUpdateEmployee(Employee employee) {
 
 			Session session = HibernateUtil.openSession();
 			Transaction trx = session.beginTransaction();
-			session.save(employee);
+			session.saveOrUpdate(employee);
 			trx.commit();
 	}
 	
@@ -74,7 +74,7 @@ public class DAO {
 		Query<Employee> query = session.createNamedQuery("Employee.findAll", Employee.class);		
 		return query.getResultList();
 	}
-
+	
 	@SuppressWarnings("null")
 	public List<Department> getAllDepartmentIdAndName(){
 		List<Department> deptList = new ArrayList<>();
