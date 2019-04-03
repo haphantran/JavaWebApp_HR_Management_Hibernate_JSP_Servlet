@@ -54,9 +54,13 @@ public class GetEmployeeListServlet extends HttpServlet {
 				break;
 			case "getBySearchTerm":
 				employeeList= dao.getEmployeeBySearchTerm(request.getParameter("searchTerm"));
+				request.setAttribute("employeeList", employeeList);
+				request.setAttribute("searchTerm", request.getParameter("searchTerm"));
+				getServletContext().getRequestDispatcher("/searchEmployee.jsp").forward(request, response);
 				break;
 			default: //getAll or default, return all Employee;
 				employeeList = dao.getAllEmployee();
+				//pass the employee list to search page			
 		}
 		
 		request.setAttribute("employeeList", employeeList);
