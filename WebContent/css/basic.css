@@ -90,7 +90,7 @@ h2 {
 	border-radius: 10px 10px 10px 10px;
 	background: #fff;
 	width: 95%;
-	height:auto;
+	min-height:700px;
 	-webkit-box-shadow : 0 30px 60px 0 rgba( 0, 0, 0, 0.3);
 	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 	text-align: center;
@@ -139,6 +139,22 @@ h2.inactive {
 h2.active {
 	color: #0d0d0d;
 	border-bottom: 2px solid #5fbae9;
+}
+
+input::-webkit-input-placeholder {
+color: #cccccc !important;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color: #cccccc !important;  
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #cccccc !important;  
+}
+ 
+input:-ms-input-placeholder {  
+color: #cccccc !important;  
 }
 
 /* FORM TYPOGRAPHY*/
