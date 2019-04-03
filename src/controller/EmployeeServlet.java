@@ -20,7 +20,7 @@ import model.DAO;
 /**
  * Servlet implementation class HRServlet
  */
-@WebServlet("/AddOrUpdateEmployeeServlet")
+@WebServlet("/employeeServlet")
 public class EmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

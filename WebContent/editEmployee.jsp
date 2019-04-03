@@ -44,7 +44,7 @@
 
 		<div class="main">
 			<h1>Edit Employee</h1>
-			<form id="editEmployee" action="EmployeeServlet" method="post">
+			<form id="editEmployee" action="employeeServlet" method="post">
 				<table>
 					<tr>
 						<td>Employee Id:</td>
@@ -126,7 +126,7 @@
 				
 			</form>
 			<!-- a second form when user click delete, send the hidden input -->
-			<form>
+			<form action="employeeServlet" method="post">
 				<input type="hidden" name="singleChoice" value="delete"> 
 				<input class="smallButton" type="submit" value="Delete Employee"">
 			</form>
