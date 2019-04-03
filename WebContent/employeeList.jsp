@@ -57,19 +57,32 @@
 					<%
 						for (Employee employee : empList) {
 									int empId = employee.getEmployeeId();
-									
 					%>
 					<tr>
 						<td><a href="editEmployee.jsp?id=<%=empId%>"><%=empId%></a></td>
 						<td><%=employee.getFirstName()%></td>
 						<td><%=employee.getLastName()%></td>
 						<td><%=employee.getEmail()%></td>
-						<td><%=employee.getDepartmentId()%></td>
+						<td><%
+								if (employee.getDepartmentId() != null) {
+												out.print(employee.getDepartmentId());
+											}
+							%></td>
 						<td><%=employee.getJobId()%></td>
-						<td><%=employee.getManagerId()%></td>
+						<td><%
+								if (employee.getManagerId() != null) {
+												out.print(employee.getManagerId());
+											}
+							%></td>
 						<td><%=employee.getHireDate()%></td>
 						<td><%=employee.getSalary()%></td>
-						<td><%=employee.getCommissionPct()%></td>
+						<td>
+							<%
+								if (employee.getCommissionPct() != null) {
+												out.print(employee.getCommissionPct());
+											}
+							%>
+						</td>
 					</tr>
 					<%
 						}

@@ -106,7 +106,8 @@
 
 						<td>Commission:</td>
 						<td><input type="text" name="commissionPct"
-							value="<%=employee.getCommissionPct()%>"></td>
+							<%if (employee.getCommissionPct() == null) {%> value=""
+							<%} else {%> value="<%=employee.getCommissionPct()%>" <%}%>></td>
 					</tr>
 					<tr>
 						<td>Manager ID:</td>
@@ -117,9 +118,10 @@
 						<td><select name="dept">
 								<option></option>
 								<%
+								//display department name if the employee has a department.
 									for (Department dept : deptList) {
-												if (dept.getId() == employee.getDepartmentId()){
-													out.print("<option selected=\"selected\">"  + dept.getName()+ "</option>");
+												if (employee.getDepartmentId()!= null && dept.getId() == employee.getDepartmentId()) {
+													out.print("<option selected=\"selected\">" + dept.getName() + "</option>");
 												} else {
 													out.print("<option>" + dept.getName() + "</option>");
 												}
