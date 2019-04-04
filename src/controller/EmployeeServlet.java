@@ -104,19 +104,27 @@ public class EmployeeServlet extends HttpServlet {
 			
 			String singleChoice = request.getParameter("singleChoice");
 			if (singleChoice.equalsIgnoreCase("delete")) {//delete
-				dao.deleteEmployee(emp);				
+				dao.deleteEmployee(emp);	
+				String message = "Employee deleted";
+				request.setAttribute("message", message);
+				getServletContext().getRequestDispatcher("/message.jsp")
+						.forward(request, response);
 			} else { //add or update
 				//id = 0 mean add new  employee without ID field
 				if (id ==0) emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 						managerId, departmentId);
 				dao.addOrUpdateEmployee(emp);
+				String message = "Employee added or updated";
+				request.setAttribute("message", message);
+				getServletContext().getRequestDispatcher("/message.jsp")
+						.forward(request, response);
 			}
 			
-			response.sendRedirect("index.jsp");
+			
 
 		} catch (Exception e) {
 			String errorMessage = "Cannot add or update employee";
-			request.setAttribute("errorMessage", errorMessage);
+			request.setAttribute("errorMessage", errorMessage+": "+e.getMessage());
 			getServletContext().getRequestDispatcher("/error.jsp")
 					.forward(request, response);
 		}

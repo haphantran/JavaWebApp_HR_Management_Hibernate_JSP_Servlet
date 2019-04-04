@@ -43,6 +43,7 @@
 						<th>First Name</th>
 						<th>LastName</th>
 						<th>Email</th>
+						<th>Phone Number</th>
 						<th>Department ID</th>
 						<th>Job ID</th>
 						<th>Manager ID</th>
@@ -61,6 +62,7 @@
 						<td><%=employee.getFirstName()%></td>
 						<td><%=employee.getLastName()%></td>
 						<td><%=employee.getEmail()%></td>
+						<td><span><%=employee.getPhoneNumber()%></span></td>
 						<td><%
 								if (employee.getDepartmentId() != null) {
 												out.print(employee.getDepartmentId());

@@ -38,31 +38,31 @@
 
 		<div class="main">
 			<h1>Add a new Employee</h1>
-			<form class="" action="EmployeeServlet" method="post">
+			<form class="" action="employeeServlet" method="post">
 				<table>
 					<tr>
 						<td>First name:</td>
-						<td><input type="text" name="firstName"></td>
+						<td><input type="text" name="firstName" required></td>
 						<td>Last name:</td>
-						<td><input type="text" name="lastName"></td>
+						<td><input type="text" name="lastName" required></td>
 					</tr>
 
 					<tr>
 						<td>Email:</td>
-						<td><input type="text" name="email"></td>
+						<td><input type="text" name="email" required></td>
 						<td>Phone Number:</td>
-						<td><input type="text" name="phoneNumber"></td>
+						<td><input type="text" name="phoneNumber" required></td>
 					</tr>
 
 					<tr>
 						<td>Hire Date:</td>
 						<td><input type="date" name="hireDate"
-							placeHolder="Hire Date"></td>
+							placeHolder="Hire Date" required></td>
 
 						<td>Job ID:</td>
 
 
-						<td><select name="jobId">
+						<td><select name="jobId" required>
 								<option></option>
 								<%
 									for (String jobID : jobList) {
@@ -76,17 +76,17 @@
 
 					<tr>
 						<td>Salary:</td>
-						<td><input type="text" name="salary"></td>
+						<td><input type="number" min="0" name="salary" required></td>
 
 						<td>Commission:</td>
-						<td><input type="text" name="commissionPct"></td>
+						<td><input type="number" min="0" max="1" name="commissionPct" required></td>
 					</tr>
 					<tr>
 						<td>Manager ID:</td>
-						<td><input type="text" name="managerId"></td>
+						<td><input type="number" name="managerId" required></td>
 
 						<td>Department:</td>
-						<td><select name="dept">
+						<td><select name="dept" required>
 								<option></option>
 								<%
 									for (Department dept : deptList) {

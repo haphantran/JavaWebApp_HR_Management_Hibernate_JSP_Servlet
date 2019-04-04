@@ -33,7 +33,7 @@
 		<div class="main">
 			<h2 style="color: black;"><%=message%></h2>
 			<input class="smallButton" class="fadeIn first" type="button" value="Return"
-					onclick="window.location.href='index.jsp'">
+					onclick="javascript:history.go(-2)">
 		</div>
 	</div>
 

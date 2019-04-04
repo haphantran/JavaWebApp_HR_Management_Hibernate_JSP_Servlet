@@ -55,28 +55,28 @@
 					<tr>
 						<td>First name:</td>
 						<td><input type="text" name="firstName"
-							value="<%=employee.getFirstName()%>"></td>
+							value="<%=employee.getFirstName()%>" required></td>
 						<td>Last name:</td>
 						<td><input type="text" name="lastName"
-							value="<%=employee.getLastName()%>"></td>
+							value="<%=employee.getLastName()%>" required></td>
 					</tr>
 
 					<tr>
 						<td>Email:</td>
 						<td><input type="text" name="email"
-							value="<%=employee.getEmail()%>"></td>
+							value="<%=employee.getEmail()%>" required></td>
 						<td>Phone Number:</td>
 						<td><input type="text" name="phoneNumber"
-							value="<%=employee.getPhoneNumber()%>"></td>
+							value="<%=employee.getPhoneNumber()%>" required></td>
 					</tr>
 
 					<tr>
 						<td>Hire Date:</td>
 						<td><input type="date" name="hireDate"
-							placeHolder="Hire Date" value="<%=employee.getHireDate()%>"></td>
+							placeHolder="Hire Date" value="<%=employee.getHireDate()%>" required></td>
 
 						<td>Job ID:</td>
-						<td><select name="jobId">
+						<td><select name="jobId" required>
 								<option></option>
 								<%
 									for (String job : jobList) {
@@ -91,21 +91,21 @@
 					</tr>
 					<tr>
 						<td>Salary:</td>
-						<td><input type="text" name="salary"
-							value="<%=employee.getSalary()%>"></td>
+						<td><input type="number" min="0" name="salary"
+							value="<%=employee.getSalary()%>" required></td>
 
 						<td>Commission:</td>
-						<td><input type="text" name="commissionPct"
+						<td><input type="number" step="0.01" min="0" max="0.99" name="commissionPct"
 							<%if (employee.getCommissionPct() == null) {%> value=""
-							<%} else {%> value="<%=employee.getCommissionPct()%>" <%}%>></td>
+							<%} else {%> value="<%=employee.getCommissionPct()%>" <%}%> required></td>
 					</tr>
 					<tr>
 						<td>Manager ID:</td>
-						<td><input type="text" name="managerId"
-							value="<%=employee.getManagerId()%>"></td>
+						<td><input type="number" name="managerId"
+							value="<%=employee.getManagerId()%>" required></td>
 
 						<td>Department:</td>
-						<td><select name="dept">
+						<td><select name="dept" required>
 								<option></option>
 								<%
 									//display department name if the employee has a department.

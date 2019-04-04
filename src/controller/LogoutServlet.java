@@ -42,7 +42,7 @@ public class LogoutServlet extends HttpServlet {
 		// session.setAttribute("user", null);
 		session.removeAttribute("user");
 		session.getMaxInactiveInterval();
-		HibernateUtil.closeSessionFactory();
+//		HibernateUtil.closeSessionFactory();
 		response.sendRedirect("logout.jsp");
 		
 		out.println("thank you!!, Your session was destroyed successfully!!");
