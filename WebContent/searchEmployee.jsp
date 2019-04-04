@@ -51,6 +51,11 @@
 			<h2>
 				Employee search result for input:<span style="color: red"> <%=request.getAttribute("searchTerm")%></span>
 			</h2>
+			<%
+				if (empList.size() == 0) {
+								out.print("<h1>No result found</h1>");
+							} else {
+			%>
 			<table class="employeeList">
 				<thead>
 					<tr>
@@ -65,20 +70,20 @@
 				<tbody>
 					<%
 						for (Employee employee : empList) {
-										int empId = employee.getEmployeeId();
+											int empId = employee.getEmployeeId();
 					%>
 					<tr>
 						<td><%=employee.getFirstName() + " " + employee.getLastName()%></td>
 						<td>
 							<%
 								if (employee.getDepartmentId() != null) {
-													for (Department department : deptList) {
-														if (department.getId() == employee.getDepartmentId()) {
-															out.print(department.getName());
-															break;
+														for (Department department : deptList) {
+															if (department.getId() == employee.getDepartmentId()) {
+																out.print(department.getName());
+																break;
+															}
 														}
 													}
-												}
 							%>
 						</td>
 						<td><%=employee.getJobId()%></td>
@@ -96,6 +101,7 @@
 			</table>
 			<%
 				}
+			}
 			%>
 
 
