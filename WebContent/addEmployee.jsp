@@ -79,7 +79,7 @@
 						<td><input type="number" min="0" name="salary" required></td>
 
 						<td>Commission:</td>
-						<td><input type="number" min="0" max="1" name="commissionPct" required></td>
+						<td><input type="number" step="0.01" min="0" max="0.99" name="commissionPct" required></td>
 					</tr>
 					<tr>
 						<td>Manager ID:</td>

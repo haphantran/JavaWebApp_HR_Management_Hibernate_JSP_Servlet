@@ -49,7 +49,7 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-			
+		System.out.println("delete1");
 			
 
 	
@@ -74,6 +74,7 @@ public class EmployeeServlet extends HttpServlet {
 		firstName = request.getParameter("firstName");
 		lastName = request.getParameter("lastName");
 		email = request.getParameter("email");
+		System.out.println("delete2");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			hireDate = format.parse(request.getParameter("hireDate"));
@@ -81,6 +82,7 @@ public class EmployeeServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		System.out.println("delete3");
 		phoneNumber = request.getParameter("phoneNumber");
 		salary = Double.parseDouble(request.getParameter("salary"));
 		commissionPct = Double.parseDouble(request.getParameter("commissionPct"));
@@ -96,14 +98,16 @@ public class EmployeeServlet extends HttpServlet {
 				break;
 			}
 		}		
-		
+		System.out.println("delete4");
 		HttpSession session = request.getSession(true);
 		Employee emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 				managerId, departmentId);
 		try {
 			
 			String singleChoice = request.getParameter("singleChoice");
+			System.out.println("delete?");
 			if (singleChoice.equalsIgnoreCase("delete")) {//delete
+				System.out.println("delete");
 				dao.deleteEmployee(emp);	
 				String message = "Employee deleted";
 				request.setAttribute("message", message);

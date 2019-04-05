@@ -128,6 +128,7 @@
 			<!-- a second form when user click delete, send the hidden input -->
 			<form action="employeeServlet" method="post">
 				<input type="hidden" name="singleChoice" value="delete"> 
+				<input type="hidden" name="employeeId" value="<%=id%>">
 				<input class="smallButton" type="submit" value="Delete Employee"">
 			</form>
 			<input class="smallButton" type="button" onclick="javascript:history.back(-1);" value="Return">
