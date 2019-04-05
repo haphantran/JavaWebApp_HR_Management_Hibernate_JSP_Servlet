@@ -113,6 +113,7 @@ public class EmployeeServlet extends HttpServlet {
 				//id = 0 mean add new  employee without ID field
 				if (id ==0) emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 						managerId, departmentId);
+				System.out.println(emp.getEmployeeId());
 				dao.addOrUpdateEmployee(emp);
 				String message = "Employee added or updated";
 				request.setAttribute("message", message);
