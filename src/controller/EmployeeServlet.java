@@ -116,12 +116,12 @@ public class EmployeeServlet extends HttpServlet {
 				if (id ==0) {
 					emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 						managerId, departmentId);
-						message = "Employee" + firstName + ", " + lastName + " added";
+						message = "Employee " + firstName + ", " + lastName + " added";
 				}
 				else {
 					emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 						managerId, departmentId);
-					message = "Employee" + firstName + ", " + lastName + " updated";
+					message = "Employee " + firstName + ", " + lastName + " updated";
 				}
 				dao.addOrUpdateEmployee(emp);
 				
