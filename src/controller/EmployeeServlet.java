@@ -49,10 +49,6 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.println("delete1");
-			
-
-	
 		int id = 0;
 		String firstName;
 		String lastName;
@@ -67,59 +63,68 @@ public class EmployeeServlet extends HttpServlet {
 		
 		
 
-		if (request.getParameter("employeeId") !=null) {
-			id = Integer.parseInt(request.getParameter("employeeId"));	
-		}
+	
 		
-		firstName = request.getParameter("firstName");
-		lastName = request.getParameter("lastName");
-		email = request.getParameter("email");
-		System.out.println("delete2");
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			hireDate = format.parse(request.getParameter("hireDate"));
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		System.out.println("delete3");
-		phoneNumber = request.getParameter("phoneNumber");
-		salary = Double.parseDouble(request.getParameter("salary"));
-		commissionPct = Double.parseDouble(request.getParameter("commissionPct"));
-		jobId = request.getParameter("jobId");
-		managerId = Integer.parseInt(request.getParameter("managerId"));
-		String deptname = request.getParameter("dept");
+		HttpSession session = request.getSession(true);
+		
 		
 		DAO dao = new DAO();
-		List<Department> deptList = dao.getAllDepartmentIdAndName();
-		for (Department department : deptList) {
-			if (department.getName().equalsIgnoreCase(deptname)) {
-				departmentId = department.getId();				
-				break;
-			}
-		}		
-		System.out.println("delete4");
-		HttpSession session = request.getSession(true);
-		Employee emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
-				managerId, departmentId);
+
 		try {
 			
 			String singleChoice = request.getParameter("singleChoice");
-			System.out.println("delete?");
+		
 			if (singleChoice.equalsIgnoreCase("delete")) {//delete
-				System.out.println("delete");
-				dao.deleteEmployee(emp);	
-				String message = "Employee deleted";
+				id = Integer.parseInt(request.getParameter("employeeId"));
+				
+				dao.deleteEmployee(dao.getEmployeeByID(id));	
+				String message = "Employee with id = " + id + " deleted";
 				request.setAttribute("message", message);
 				getServletContext().getRequestDispatcher("/message.jsp")
 						.forward(request, response);
 			} else { //add or update
-				//id = 0 mean add new  employee without ID field
-				if (id ==0) emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
+				if (request.getParameter("employeeId") !=null) {
+					id = Integer.parseInt(request.getParameter("employeeId"));	
+				}	
+				firstName = request.getParameter("firstName");
+				lastName = request.getParameter("lastName");
+				email = request.getParameter("email");
+				
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				try {
+					hireDate = format.parse(request.getParameter("hireDate"));
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				phoneNumber = request.getParameter("phoneNumber");
+				salary = Double.parseDouble(request.getParameter("salary"));
+				commissionPct = Double.parseDouble(request.getParameter("commissionPct"));
+				jobId = request.getParameter("jobId");
+				managerId = Integer.parseInt(request.getParameter("managerId"));
+				String deptname = request.getParameter("dept");
+				List<Department> deptList = dao.getAllDepartmentIdAndName();
+				for (Department department : deptList) {
+					if (department.getName().equalsIgnoreCase(deptname)) {
+						departmentId = department.getId();				
+						break;
+					}
+				}		
+				Employee emp =null;
+				String message = "";
+				if (id ==0) {
+					emp = new Employee(firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
 						managerId, departmentId);
-				System.out.println(emp.getEmployeeId());
+						message = "Employee" + firstName + ", " + lastName + " added";
+				}
+				else {
+					emp = new Employee(id,firstName, lastName, email, hireDate, phoneNumber, salary, commissionPct, jobId,
+						managerId, departmentId);
+					message = "Employee" + firstName + ", " + lastName + " updated";
+				}
 				dao.addOrUpdateEmployee(emp);
-				String message = "Employee added or updated";
+				
 				request.setAttribute("message", message);
 				getServletContext().getRequestDispatcher("/message.jsp")
 						.forward(request, response);
